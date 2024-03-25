@@ -26,6 +26,50 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "FindById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7235/findById?id=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7235",
+					"path": [
+						"findById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7235/findByName.ion",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7235",
+					"path": [
+						"findByName.ion"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
