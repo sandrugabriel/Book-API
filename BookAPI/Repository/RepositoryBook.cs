@@ -22,5 +22,28 @@ namespace BookAPI.Repository
         {
             return await _context.Book.ToListAsync();
         }
+
+        public async Task<Book> GetByIdAsync(int id)
+        {
+            List<Book> all = await _context.Book.ToListAsync();
+
+            for(int i=0;i<all.Count; i++)
+                if (all[i].Id == id)
+                    return all[i];
+
+            return null;
+        }
+
+        public async Task<Book> GetByName(string name)
+        {
+
+            List<Book> all = await _context.Book.ToListAsync();
+
+            for (int i = 0; i < all.Count; i++)
+                if (all[i].Name.Equals(name))
+                    return all[i];
+
+            return null;
+        }
     }
 }

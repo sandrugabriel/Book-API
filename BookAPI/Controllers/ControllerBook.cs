@@ -22,10 +22,23 @@ namespace BookAPI.Controllers
         [HttpGet("")]
         public async Task<ActionResult<IEnumerable<Book>>> GetAll()
         {
-            var products = await _repository.GetAllAsync();
-            return Ok(products);
+            var book = await _repository.GetAllAsync();
+            return Ok(book);
         }
 
+        [HttpGet("/findById")]
+        public async Task<ActionResult<Book>> GetById([FromQuery] int id)
+        {
+            var book = await _repository.GetByIdAsync(id);
+            return Ok(book);
+        }
+
+        [HttpGet("/findByName.{name}")]
+        public async Task<ActionResult<Book>> GetByName([FromRoute] string name)
+        {
+            var book = await _repository.GetByName(name);
+            return Ok(book);
+        }
 
 
     }
