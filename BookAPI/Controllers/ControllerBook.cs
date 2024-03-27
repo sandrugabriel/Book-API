@@ -1,4 +1,5 @@
-﻿using BookAPI.Models;
+﻿using BookAPI.Dto;
+using BookAPI.Models;
 using BookAPI.Repository.interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,29 @@ namespace BookAPI.Controllers
         {
             var book = await _repository.GetByName(name);
             return Ok(book);
+        }
+
+
+        [HttpPost("/create")]
+        public async Task<ActionResult<Book>> Create([FromBody] CreateRequest request)
+        {
+            var car = await _repository.Create(request);
+            return Ok(car);
+
+        }
+
+        [HttpPut("/update")]
+        public async Task<ActionResult<Book>> Update([FromQuery] int id, [FromBody] UpdateRequest request)
+        {
+            var car = await _repository.Update(id, request);
+            return Ok(car);
+        }
+
+        [HttpDelete("/deleteById")]
+        public async Task<ActionResult<Book>> DeleteCarById([FromQuery] int id)
+        {
+            var car = await _repository.DeleteById(id);
+            return Ok(car);
         }
 
 

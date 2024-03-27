@@ -4,6 +4,7 @@ using BookAPI.Models;
 using BookAPI.Repository.interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using BookAPI.Dto;
 
 namespace BookAPI.Repository
 {
@@ -45,5 +46,48 @@ namespace BookAPI.Repository
 
             return null;
         }
+
+
+        public async Task<Book> Create(CreateRequest request)
+        {
+
+            var book = _mapper.Map<Book>(request);
+
+            _context.Book.Add(book);
+
+            await _context.SaveChangesAsync();
+
+            return book;
+
+        }
+
+        public async Task<Book> Update(int id, UpdateRequest request)
+        {
+
+            var book = await _context.Book.FindAsync(id);
+
+            book.Name = request.Name ?? book.Name;
+            book.Author = request.Author ?? book.Author;
+            book.Year = request.Year ?? book.Year;
+
+            _context.Book.Update(book);
+
+            await _context.SaveChangesAsync();
+
+            return book;
+
+        }
+
+        public async Task<Book> DeleteById(int id)
+        {
+            var book = await _context.Book.FindAsync(id);
+
+            _context.Book.Remove(book);
+
+            await _context.SaveChangesAsync();
+
+            return book;
+        }
+
     }
 }
