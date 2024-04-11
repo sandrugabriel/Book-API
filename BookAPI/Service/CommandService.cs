@@ -55,7 +55,7 @@ namespace BookAPI.Service
             {
                 throw new ItemDoesNotExist(Constants.Constants.ItemDoesNotExist);
             }
-            book = await _repository.DeleteById(id);
+            await _repository.DeleteById(id);
             return book;
         }
 

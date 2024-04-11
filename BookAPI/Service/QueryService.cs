@@ -31,9 +31,9 @@ namespace BookAPI.Service
         {
             var books = await _repository.GetByName(name);
 
-            if (books.Name == "")
+            if (books == null)
             {
-                throw new ItemDoesNotExist(Constants.Constants.ItemsDoNotExist);
+                throw new ItemDoesNotExist(Constants.Constants.ItemDoesNotExist);
             }
 
             return books;
@@ -46,7 +46,7 @@ namespace BookAPI.Service
 
             if (books == null)
             {
-                throw new ItemsDoNotExist(Constants.Constants.ItemDoesNotExist);
+                throw new ItemDoesNotExist(Constants.Constants.ItemDoesNotExist);
             }
 
             return books;
