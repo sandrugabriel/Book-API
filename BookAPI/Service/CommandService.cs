@@ -39,7 +39,7 @@ namespace BookAPI.Service
             }
 
 
-            if (book.Year <= 1000)
+            if (request.Year <= 1000)
             {
                 throw new InvalidYear(Constants.Constants.InvalidYear);
             }
